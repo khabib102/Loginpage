@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+	<link rel="icon" href="/icon/logo.ico">
+</head>
+<body>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Create Account</h1>
+			<div class="social-container">
+				<a href="#" id="googleSignInBtn" class="social"><img src="/icon/icons8-google.svg"></a>
+				<a href="#" id="githubLoginBtn" class="social"><img src="/icon/icons8-github.svg"></a>
+				<a href="#" class="social"><img src="/icon/icons8-fb.svg"></a>
+			</div>
+			<span>or use your email for registration</span>
+			<input type="text" placeholder="Name" />
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<button>Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Sign in</h1>
+			<div class="social-container">
+				<a href="#" id="googleSignInBtn" class="social"><img src="/icon/icons8-google.svg"></a>
+				<a href="#" id="githubLoginBtn" class="social"><img src="/icon/icons8-github.svg"></a>
+				<a href="#" class="social"><img src="/icon/icons8-fb.svg"></a>
+			</div>
+			<span>or use your account</span>
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<a href="#">Forgot your password?</a>
+			<button>Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <footer>
+	<p>
+
+    </p>
+</footer> -->
+<script>
+    document.getElementById('googleSignInBtn').addEventListener('click', function() {
+      const clientId = '26861858700-4l4nn1lgkfeflp4lh0i3rbpmvh1b8k87.apps.googleusercontent.com';
+      const redirectUri = 'http://localhost:5500/auth/google/callback';  // Your website's redirect URL
+      const scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email';
+
+      const url = `https://accounts.google.com/o/oauth2/v2/auth?response_type=token&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&include_granted_scopes=true`;
+
+      // Redirect to Google OAuth 2.0 Authorization
+      window.location.href = url;
+    });
+  </script>
+  <script>
+    document.getElementById('githubLoginBtn').addEventListener('click', function() {
+      const clientId = 'Ov23li3semtSc6fklkox';  // Replace with your GitHub OAuth app's Client ID
+      const redirectUri = 'http://localhost:5500/auth/github/callback';  // Your backend endpoint where GitHub will redirect
+
+      const url = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=user`;
+
+      // Redirect to GitHub OAuth 2.0 Authorization page
+      window.location.href = url;
+    });
+  </script>
+<script src="script.js"></script>
+<script src="server.js"></script>
+<script src="https://apis.google.com/js/api.js" async defer></script>
+</body>
+</html>
